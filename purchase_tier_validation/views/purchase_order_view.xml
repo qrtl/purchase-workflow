@@ -23,9 +23,11 @@
                 <field name="validated" invisible="1"/>
                 <field name="rejected" invisible="1"/>
                 <div class="alert alert-warning"
-                     attrs="{'invisible': ['|', '|', '|',
+                     attrs="{'invisible': ['|', '|', '|', '|',
                      ('validated', '=', True), ('state', 'not in', ['draft','sent']),
-                     ('rejected', '=', True), ('review_ids', '=', [])]}"
+                     ('rejected', '=', True), ('review_ids', '=', []),
+                     ('uid', 'not in', 'reviewer_ids')
+                     ]}"
                      style="margin-bottom:0px;">
                     <p><i class="fa fa-info-circle"/>This PO needs to be
                         validated.
