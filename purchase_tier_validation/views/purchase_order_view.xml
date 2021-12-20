@@ -23,22 +23,21 @@
                 <field name="validated" invisible="1"/>
                 <field name="rejected" invisible="1"/>
                 <div class="alert alert-warning"
-                     attrs="{'invisible': ['|', '|', '|', '|',
+                     attrs="{'invisible': ['|', '|', '|',
                      ('validated', '=', True), ('state', 'not in', ['draft','sent']),
-                     ('rejected', '=', True), ('review_ids', '=', []),
-                     ('uid', 'not in', 'reviewer_ids')
-                     ]}"
+                     ('rejected', '=', True), ('review_ids', '=', [])]}"
                      style="margin-bottom:0px;">
                     <p><i class="fa fa-info-circle"/>This PO needs to be
                         validated.
                         <button name="validate_tier"
                             string="Validate"
-                            attrs="{'invisible': [('review_ids', '=', [])]}"
+                            attrs="{'invisible': ['|', ('review_ids', '=', []), ('is_reviewer', '=', False)]}"
                             type="object"
                             class="oe_inline oe_button btn-success"
                             icon="fa-thumbs-up"/>
                         <button name="reject_tier"
                             string="Reject"
+                            attrs="{'invisible': [('is_reviewer', '=', False)]}"
                             type="object"
                             class="btn-icon btn-danger"
                             icon="fa-thumbs-down"/>
